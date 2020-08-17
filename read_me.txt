@@ -1,0 +1,1 @@
+exe jest w Program/Program/Program/bin/Debug, jest to x64

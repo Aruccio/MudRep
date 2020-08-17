@@ -12,10 +12,10 @@ namespace Program
     static class Manager
     {
         
-        static string pathPlayers = @"../../../../../Players";
-        static string pathLocations = @"../../../../../Locations";
-        static string pathCommandsPlayer = @"../../../../../Commands/player";
-        static string pathThings = @"../../../../../Things";
+        static string pathPlayers = @"../../../../../../Players";
+        static string pathLocations = @"../../../../../../Locations";
+        static string pathCommandsPlayer = @"../../../../../../Commands/player";
+        static string pathThings = @"../../../../../../Things";
 
 
 

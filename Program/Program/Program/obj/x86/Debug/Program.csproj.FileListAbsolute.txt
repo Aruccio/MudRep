@@ -1,0 +1,7 @@
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\bin\x86\Debug\Program.exe.config
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\bin\x86\Debug\Program.exe
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\bin\x86\Debug\Program.pdb
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\obj\x86\Debug\Program.csprojAssemblyReference.cache
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\obj\x86\Debug\Program.csproj.CoreCompileInputs.cache
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\obj\x86\Debug\Program.exe
+D:\WLASNE\Csharp\MudRep\MudRep\Program\Program\Program\obj\x86\Debug\Program.pdb
