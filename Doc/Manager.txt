@@ -1,0 +1,34 @@
+NA POCZATKU ZAWSZE UPEWNIC SIE, ZE SCIEZKI PLIKOW SA DOBRE!
+
+
+
+
+public static Player ReadPlayer(string name)
+	wczytuje gracza jako obiekt z pliku o imieniu gracza
+	zwraca ten obiekt
+
+
+public static void WritePlayer(Player p)
+	zapisuje obiekt gracza do pliku o podanej sciezce
+
+
+public static Location ReadLocation(int id)
+	wczytuje lokacje jako obiekt z pliku o id lokacji
+	zwraca ta lokacje
+	zwrocic uwage na puste linie pokazane w templatce lokacji
+
+
+public static void ReadCommand(Player p, Location loc)
+	czyta komende wprowadzana w konsoli (w funkcji to jest string command)
+	kolejno:
+		updatuje dostepne wyjscia z lokacji
+		sprawdza czy komenda to dostepne wyjscie z lokacji
+		
+
+public static List<string> ExitsMerge(List<string[]> exs)
+	laczy wszystkie mozliwe wyjscia na lokacji. Przykladowo upewnia sie,
+	ze program zna zarowno kierunek 'e' jak i 'wschod'
+
+
+public static void MovePlayer(Player p, Location current, string command)
+	Zmienia polozenie gracza zgodnie z komenda. Tylko mechanicznie. Nic graczowi nie pokazuje.

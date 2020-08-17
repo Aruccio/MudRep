@@ -1,0 +1,7 @@
+D:\WLASNE\Csharp\Mud\Program\Program\Program\bin\Debug\Program.exe.config
+D:\WLASNE\Csharp\Mud\Program\Program\Program\bin\Debug\Program.exe
+D:\WLASNE\Csharp\Mud\Program\Program\Program\bin\Debug\Program.pdb
+D:\WLASNE\Csharp\Mud\Program\Program\Program\obj\Debug\Program.csprojAssemblyReference.cache
+D:\WLASNE\Csharp\Mud\Program\Program\Program\obj\Debug\Program.csproj.CoreCompileInputs.cache
+D:\WLASNE\Csharp\Mud\Program\Program\Program\obj\Debug\Program.exe
+D:\WLASNE\Csharp\Mud\Program\Program\Program\obj\Debug\Program.pdb

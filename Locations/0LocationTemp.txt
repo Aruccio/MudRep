@@ -1,0 +1,9 @@
+id
+shortN
+longN
+exit=ne=id innego
+exit=n=id innego
+exit=wyjscie=id innego
+
+thing=czynnosc=opis
+thing=czynnosc=opis

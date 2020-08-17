@@ -1,0 +1,8 @@
+name
+shortN
+gender
+race
+odmiana,mianownik,dopelnias,celownik,biernik,narzednik,miejscownik
+startloc idlokacji
+currentloc idlokacji
+i ekwipunek,ekwipunek,ekwipunek,itakdalej

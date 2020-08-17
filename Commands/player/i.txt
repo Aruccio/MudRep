@@ -1,0 +1,2 @@
+ShowPlayer
+ShowEq

@@ -1,0 +1,5 @@
+2
+Ulica Wertykalna Poludniowa
+Ulica nazywana ulica Wertykalna. Na poludniu widac dalsza czesc miasta, natomiast na polnocy otwiera sie na plac miejski.
+exit=n,polnoc=1
+exit=s,poludnie=9

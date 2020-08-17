@@ -1,0 +1,10 @@
+1
+Plac miejski
+Zwyczajny plac miejski, pozwalajacy na oddalenie sie w cztery strony miasta wzdlug dwoch glownych ulic. Widac budynki.
+exit=n,polnoc=2
+exit=s,poludnie=3
+exit=e,wschod=4
+exit=w,zachod=5
+
+thing=obejrzyj=budynki=Zwyczajne, lekko podniszczone kamienice.
+thing=czynnosc=rzecz=Opisik

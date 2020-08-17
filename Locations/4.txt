@@ -1,0 +1,5 @@
+4
+Ulica Horyzontalna Wschodnia
+Ulica nazywana ulica Horyzontalna. Na wschodzie widac, jak ciagnie sie dalej w miasto, natomiast na zachodzie otwiera sie na plac miejski.
+exit=e,wschod=6
+exit=w,zachod=1
