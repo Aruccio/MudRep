@@ -5,4 +5,4 @@ wampir
 odmiana,Sierya,Sieryi,Sierye,Sierye,Sierya,Sieryi
 startloc 1
 currentloc 1
-i czarna-matowa-glewia,dlugi-wilczy-plaszcz,brazowa-chusta,sfatygujace-kamuflujace-gogle
+i czarna-matowa-glewia,dlugi-wilczy-plaszcz,brazowa-chusta,sfatygowane-kamuflujace-gogle
