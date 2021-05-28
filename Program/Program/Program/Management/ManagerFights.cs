@@ -32,11 +32,7 @@ namespace Program
         }
         public void LastingTour()
         {
-            //aktualizacja walczacych
-//            for (int i = 0; i < chars.Count; i++)
-//                if (!chars[i].Infight) chars.Remove(chars[i]);
-
-            //tura podzielona na 7 czesci)
+            //tura podzielona na 11 czesci)
             for(int i=1; i<=11;i++)
             {
                 foreach(var p in players)

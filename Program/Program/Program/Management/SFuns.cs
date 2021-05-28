@@ -13,64 +13,6 @@ namespace Program
     static class SFuns
     {
 
-        public static Object Recognize(Object obj)
-        {
-            Object newob = new Object();
-            switch(obj.GetType().Name)
-            {
-                case "Armor":
-                    newob = obj as Armor;
-                    break;
-                case "Cloth":
-                    newob = obj as Cloth;
-                    break;
-                case "Itemy":
-                    newob = obj as Itemy;
-                    break;
-                case "NPC":
-                    newob = obj as NPC;
-                    break;
-                case "Player":
-                    newob = obj as Player;
-                    break;
-                case "Weapon":
-                    newob = obj as Weapon;
-                    break;
-                default: break;
-            }
-            return newob;
-        }
-        /// <summary>
-        /// pierwsza litera str duza, reszta mala
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static string Up(string str)
-        {
-            return char.ToUpper(str[0]) + str.Substring(1);
-        }
-        /// <summary>
-        /// laczy wszystkie mozliwe wyjscia na lokacji.
-        /// Przykladowo upewnia sie, ze program zna zarowno kierunek 'e' jak i 'wschod'
-        /// </summary>
-        /// <param name="exs">lista wyjsc z lokacji</param>
-        /// <returns>zwraca podwojna liste z 'e' oraz 'wschod'</returns>
-        public static List<string[]> ExitsMerge(List<string[]> exs)
-        {
-            List<string[]> exits = new List<string[]>();
-
-            for (int i = 0; i < exs.Count; i++)
-            {
-                string[] exis = exs[i][0].Split(',');
-
-                exits.Add(new string[] { exis[0], exs[i][1] });
-           //     Console.WriteLine("[INFO] Idac na " + exis[0] + " dotrzemy do " + exs[i][1]);
-
-            }
-
-            return exits;
-        }
-
         /// <summary>
         /// konwertuje komende kierunku do krotkiej wersji
         /// </summary>
@@ -100,6 +42,55 @@ namespace Program
 
 
             return command;
+        }
+
+        /// <summary>
+        /// laczy wszystkie mozliwe wyjscia na lokacji.
+        /// Przykladowo upewnia sie, ze program zna zarowno kierunek 'e' jak i 'wschod'
+        /// </summary>
+        /// <param name="exs">lista wyjsc z lokacji</param>
+        /// <returns>zwraca podwojna liste z 'e' oraz 'wschod'</returns>
+        public static List<string[]> ExitsMerge(List<string[]> exs)
+        {
+            List<string[]> exits = new List<string[]>();
+
+            for (int i = 0; i < exs.Count; i++)
+            {
+                string[] exis = exs[i][0].Split(',');
+
+                exits.Add(new string[] { exis[0], exs[i][1] });
+           //     Console.WriteLine("[INFO] Idac na " + exis[0] + " dotrzemy do " + exs[i][1]);
+
+            }
+
+            return exits;
+        }
+
+        /// <summary>
+        /// pozwala wywolac funkcje o nazwie podanej jako string
+        /// </summary>
+        /// <param name="typeName"> rodzaj klasy</param>
+        /// <param name="methodName"> nazwa wywolywanej funkcji</param>
+        /// <param name="stringParam">parametr funkcji</param>
+        /// <returns></returns>
+        public static string InvokeWithString(string typeName, string methodName, string stringParam)
+        {
+            // Get the Type for the class
+            Type calledType = Type.GetType(typeName);
+
+            // Invoke the method itself. The string returned by the method winds up in s.
+            // Note that stringParam is passed via the last parameter of InvokeMember,
+            // as an array of Objects.
+            String s = (String)calledType.InvokeMember(
+                            methodName,
+                            BindingFlags.InvokeMethod | BindingFlags.Public |
+                                BindingFlags.Static,
+                            null,
+                            null,
+                            new string[] { stringParam });
+
+            // Return the string that was returned by the called method.
+            return s;
         }
 
         /// <summary>
@@ -157,31 +148,13 @@ namespace Program
         }
 
         /// <summary>
-        /// pozwala wywolac funkcje o nazwie podanej jako string
+        /// pierwsza litera str duza, reszta mala
         /// </summary>
-        /// <param name="typeName"> rodzaj klasy</param>
-        /// <param name="methodName"> nazwa wywolywanej funkcji</param>
-        /// <param name="stringParam">parametr funkcji</param>
+        /// <param name="str"></param>
         /// <returns></returns>
-        public static string InvokeWithString  (string typeName, string methodName, string stringParam)
-            {
-                // Get the Type for the class
-                Type calledType = Type.GetType(typeName);
-
-                // Invoke the method itself. The string returned by the method winds up in s.
-                // Note that stringParam is passed via the last parameter of InvokeMember,
-                // as an array of Objects.
-                String s = (String)calledType.InvokeMember(
-                                methodName,
-                                BindingFlags.InvokeMethod | BindingFlags.Public |
-                                    BindingFlags.Static,
-                                null,
-                                null,
-                                new string[] { stringParam });
-
-                // Return the string that was returned by the called method.
-                return s;
-            }
-        
+        public static string Up(string str)
+        {
+            return char.ToUpper(str[0]) + str.Substring(1);
+        }
     }
 }

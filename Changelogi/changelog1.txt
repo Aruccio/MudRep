@@ -1,0 +1,75 @@
+Podzial na foldery:
+-> Command: PlayerCommands
+-> Management: Manager, ManagerFights,SFuns, Shower
+-> Objects: Armor, Character, Cloth, Item, Itemy, Location, NPC, Player, Weapon
+-> w glownym: Program, Coloring
+
+---------------------
+PlayerCommands.cs
+I() - drukuje wyglad gracza i jego ekwipunek
+Ob(co) - drukuje ogladanie Player, NPC i Weapon
+Powiedz(tresc) - drukuje Mowisz: Tresc.
+Sp() - drukuje obecna lokacje gracza
+Zabij(kogo) - znajduje cel ataku i uruchamia walke
+---------------------
+Manager.cs
+sciezki dla wszystkich obiektow: players, locations, weapons, cloths, armors, itemy, NPC
+MovePlayer(Player, Location, kierunek) - przesuwa Player z Location na kierunek
+ReadCommand() - czyta wprowadzona komende, jesli to nie jest zakoncz. Sprawdza kolejno: kierunki, inne komendy, emocje
+ReadLocation(id) - zwraca Location o tym id
+ReadNPC(imie) - zwraca NPC z pliku
+ReadPlayer(imie) - zwraca Player z pliku
+ReadWeapon(nazwa) - zwraca bron o tej nazwie (z myslnikami)
+WritePlayer(Player) - zapisuje Player do pliku o tym samym imieniu
+---------------------
+ManagerFight.cs
+konstruktor - laduje walczace postacie do jednej listy i dzieli je na players i npcs, odpala cala walke Fight()
+Fight() - cala walka w tej instacji ManagerFight
+LastingTour() - jedna tura walki: jest podzielona na 11 czesci. Dla kazdego gracza i npca wlacza odpowiednio jego ciosy
+--------------------
+Sfuns.cs - to male funkcje ktore sa zbedne z Managerze i czesto uzywane
+ConvertCommandByDirection(kierunek) - zamienia kierunek na krotsza wersje (wschod na e)
+ExitsMerge(List<string[]> exits) - upewnia sie, ze program rozpoznaje zarowno 'e' jak i 'wschod'. Zwraca
+InvokeWithString(type,method,param) - type to klasa, method to nazwa wywolywanej funkcji, param to jej parametr. Wywoluje funkcje o podanej nazwie w formie stringa
+LongExits(List<string> exits) - zmienia liste krotkich na liste dlugich kierunkow, zwraca ja
+NumberToString(liczba) - zwraca liczbe int w formie slowa 1-9
+Up(string) - pierwsza litera duza, reszta mala
+-------------------
+Shower.cs - sluzy wszystkim funkcja typu wydrukuj/pokaz graczowi costam
+ShowCharacter(character, bool) - drukuje gracza lub NPC, bool jesli siebie
+ShowItem(Item, bool) - drukuje ogladany item (Armor, Cloth, Itemy, Weapon), bool jesli ocen, a nie obejrzyj
+ShowLocation(Location, bool) - drukuje lokacje, bool dla longa
+Splice(text) - dzieli tekst, zeby sie miescil w ilus znakach i ucinal do nowej linii
+-------------------
+Armor : Item
+name, short, long, odmiana pojedyncza i mnoga, czesc ciala
+-------------------
+Character
+bool Infight - czy postac jest w walce
+-------------------
+Cloth : Item
+name, short, long, odmiana pojedyncza i mnoga, czesc ciala
+-------------------
+Item
+klasa na wszystkie itemy (Armor, Cloth, inne Itemy, Weapon)
+name, short, long, odmiana pojedyncza i mnoga
+-------------------
+Itemy : Item - wszystkie przedmioty ktore nie pasuja w Armor, Cloth i Weapon
+name, short, long, odmiana pojedyncza i mnoga
+-------------------
+Location
+id, short, long, wyjscia, rzeczy do obejrzenia, npce, postacie, itemy lezace (jako obiekty)
+-------------------
+NPC : Character
+name, short, long, gender, race, odmiana pojedyncza i mnoga, bron w dloni, bron ogolnie (w tym w dloni)
+-------------------
+Player : Character
+name, short, long, gender, race, odmiana pojedyncza i mnoga, lokacja obecna i startowa, bron w dloni, bron ogolnie (w tym w dloni)
+-------------------
+Weapon : Item
+name, short, long, odmiana pojedyncza i mnoga, reka i predkosc
+-------------------
+Coloring.cs - funkcje zmieniajace kolor tekstu. Inne Console.Write jedynie
+-------------------
+Program.cs
+Obecnie program z tego, co bedzie "na stale" petle na komendy wpisywane przez gracza oraz wywolanie gracza, zeby byl juz zaladowany

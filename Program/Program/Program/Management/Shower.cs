@@ -15,22 +15,12 @@ namespace Program
 
         }
 
-        public static string Splice(string text)
-        {
-            var charCount = 0;
-            var lines = text.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
-                            .GroupBy(w => (charCount += w.Length + 1) / 80)
-                            .Select(g => string.Join(" ", g));
-
-            return String.Join("\n", lines.ToArray());
-        }
 
         /// <summary>
         /// pokazuje "Jestes Sierya, short" albo w 3. osobie. Nic 
         /// </summary>
         /// <param name="p"> postac </param>
         /// <param name="tomyself"> true jesli to siebie oglada</param>
- 
         public static void ShowCharacter(Character ch, bool tomyself)
         {
             if (ch is NPC)
@@ -70,6 +60,49 @@ namespace Program
             }
         }
 
+        /// <summary>
+        /// Pokazuje opis itema
+        /// </summary>
+        /// <param name="item">Item ktory ma przeczytac</param>
+        /// <param name="ocen">true dla "ocen", a nie obejrzyj</param>
+        public static void ShowItem(Item item, bool ocen)
+        {
+            if (item != null)
+            {
+                if (!ocen)
+                {
+                    if (item is Armor)
+                    {
+                        Armor ar = item as Armor;
+                        Console.WriteLine("Ogladasz uwaznie " + ar.OdmianaPoj[3] + ".");
+                        Console.WriteLine(Splice(ar.LongN));
+                    }
+                    else if (item is Cloth)
+                    {
+                        Cloth cl = item as Cloth;
+                        Console.WriteLine("Ogladasz uwaznie " + cl.OdmianaPoj[3] + ".");
+                        Console.WriteLine(Splice(cl.LongN));
+                    }
+                    else if (item is Itemy)
+                    {
+                        Itemy it = item as Itemy;
+                        Console.WriteLine("Ogladasz uwaznie " + it.OdmianaPoj[3] + ".");
+                        Console.WriteLine(Splice(it.LongN));
+                    }
+                    else if (item is Weapon)
+                    {
+                        Weapon weap = item as Weapon;
+                        Console.WriteLine("Ogladasz uwaznie " + weap.OdmianaPoj[3] + ".");
+                        Console.WriteLine(Splice(weap.LongN));
+                    }
+
+                }
+                else if (ocen)
+                {
+
+                }
+            }
+        }
 
         /// <summary>
         /// Pokazuje lokacje, jej longa lub shorta i wyjscia
@@ -139,43 +172,19 @@ namespace Program
 
         }
 
-        public static void ShowItem(Item item, bool ocen)
+        /// <summary>
+        /// Dziel tekst do 80 znakow bez dzielenia wyrazow.
+        /// </summary>
+        /// <param name="text">tekst do podzielenia</param>
+        /// <returns>ten sam text, ale z enterami</returns>
+        public static string Splice(string text)
         {
-            if(item!=null)
-            {
-                if(!ocen)
-                {
-                    if (item is Armor)
-                    {
-                        Armor ar = item as Armor;
-                        Console.WriteLine("Ogladasz uwaznie " + ar.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(ar.LongN));
-                    }
-                    else if (item is Cloth)
-                    {
-                        Cloth cl = item as Cloth;
-                        Console.WriteLine("Ogladasz uwaznie " + cl.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(cl.LongN));
-                    }
-                    else if (item is Itemy)
-                    {
-                        Itemy it = item as Itemy;
-                        Console.WriteLine("Ogladasz uwaznie " + it.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(it.LongN));
-                    }
-                    else if (item is Weapon)
-                    {
-                        Weapon weap = item as Weapon;
-                        Console.WriteLine("Ogladasz uwaznie " + weap.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(weap.LongN));
-                    }
+            var charCount = 0;
+            var lines = text.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                            .GroupBy(w => (charCount += w.Length + 1) / 80)
+                            .Select(g => string.Join(" ", g));
 
-                }
-                else if(ocen)
-                {
-
-                }
-            }
+            return String.Join("\n", lines.ToArray());
         }
     }
 }

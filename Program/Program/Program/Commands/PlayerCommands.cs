@@ -13,10 +13,9 @@ namespace Program.Commands
         {
             this.p = p;
         }
-        public void Sp()
-        {
-            Shower.ShowLocation(p.CurrentLoc, true);
-        }
+        /// <summary>
+        /// drukuje ekwipunek gracza
+        /// </summary>
         public void I()
         {
             Shower.ShowCharacter(p, true);
@@ -29,34 +28,36 @@ namespace Program.Commands
 
         }
 
-        public void Powiedz(string tresc)
-        {
-            Console.WriteLine("Mowisz:"+ tresc);
-        }
-
+        /// <summary>
+        /// oglada wskazany cel
+        /// </summary>
+        /// <param name="kogo">kogo, co</param>
         public void Ob(string kogo)
         {
-            //kogo = kogo.Replace(" ", "").ToLower();
-            kogo = kogo.ToLower();
-            if (kogo[0] == ' ') kogo = kogo.Substring(1);
+            if (kogo[0] == ' ') kogo = kogo.Substring(1).ToLower();
+            //tymczasowe obiekty potrzebne przy szukaniu co ogladamy
             Object obj = new Object();
             NPC n = new NPC();
             Player pl = new Player();
             Itemy it = new Itemy();
             Weapon weap = new Weapon();
             Armor arm = new Armor();
+
             List<Object> objs = new List<Object>();
-            objs.Add(p);
+            objs.Add(p); //dla obejrzenia siebie
+
+            //dla obejrzenia postaci na lokacji
             for (int i = 0; i < p.CurrentLoc.Characters.Count; i++)
             {
                 objs.Add(p.CurrentLoc.Characters[i]);
             }
+            //dla obejrzenia ekwipunku-broni gracza
             for (int i = 0; i < p.EqWeap.Count; i++)
             {
                 objs.Add(p.EqWeap[i]);
             }
 
-            //sprawdzanie dopelniacza
+            //sprawdzanie dopelniacza -> szukamy celu ogladania
             for (int i = 0; i < objs.Count; i++)
             {
                 if (objs[i] is NPC)
@@ -98,6 +99,28 @@ namespace Program.Commands
 
         }
 
+        /// <summary>
+        /// Mowisz: Tresc
+        /// </summary>
+        /// <param name="tresc">co mowi</param>
+        public void Powiedz(string tresc)
+        {
+            tresc = tresc.Substring(1).ToLower();
+            Console.WriteLine("Mowisz: " + SFuns.Up(tresc));
+        }
+
+        /// <summary>
+        /// pokazuje obecna lokacje gracza
+        /// </summary>
+        public void Sp()
+        {
+            Shower.ShowLocation(p.CurrentLoc, true);
+        }
+
+        /// <summary>
+        /// Rozpoczyna walke z celem
+        /// </summary>
+        /// <param name="kogo">cel</param>
         public void Zabij(string kogo)
         {
             kogo = kogo.Replace(" ", "").ToLower();
