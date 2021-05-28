@@ -50,7 +50,12 @@ namespace Program
 
         }
 
-      
+        public static void DarkCyan(string str)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Write(str);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
 
 
         

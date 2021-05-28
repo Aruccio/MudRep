@@ -6,6 +6,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using Program.Commands;
 
 namespace Program
 {
@@ -17,22 +18,24 @@ namespace Program
 
             string name = "Sierya";
             int id = 1;
-
+            
             Player p = Manager.ReadPlayer(name);
+            PlayerCommands pc = new PlayerCommands(p);
+            NPC n = new NPC();
 
-            Location loc = Manager.ReadLocation(id);
+       
+            /*
+            //zostawiam to zeby pokazac wywolanie funkcji po stringu nazwy
             MethodInfo invoked = shower.GetType().GetMethod("ShowPlayer");
             Console.WriteLine();
-
-            
-            object magicValue = invoked.Invoke(shower, new object[] {p });
-
-            Shower.ShowLocation(loc, true);
+            invoked.Invoke(shower, new object[] {p,true });
+            */
 
             string command = "";
             while(command!="zakoncz")
             {
-                Manager.ReadCommand(p, p.CurrentLoc);
+                Console.WriteLine();
+                Manager.ReadCommand(p, p.CurrentLoc, pc);
             }
 
 

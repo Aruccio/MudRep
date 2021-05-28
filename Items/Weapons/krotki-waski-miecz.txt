@@ -1,0 +1,6 @@
+krotki waski miecz
+Najzwyklejszy, prosto wykonany miecz jednoreczny.
+onehand
+odmiana,krotki waski miecz,krotkiego waskiego miecza,krotkiemu waskiemu mieczowi,krotki waski miecz,krotkim waskim mieczem,krotkim waskim mieczu
+odmiana,krotkie waskie miecze,krotkich waskich mieczy,krotkim waskim mieczom,krotkie waskie miecze,krotkimi waskimi mieczami,krotkich waskich mieczach
+3

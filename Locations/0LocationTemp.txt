@@ -7,3 +7,5 @@ exit=wyjscie=id innego
 
 thing=czynnosc=opis
 thing=czynnosc=opis
+
+npc=Margas

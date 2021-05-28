@@ -65,16 +65,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\Armor.cs" />
+    <Compile Include="Objects\Character.cs" />
+    <Compile Include="Objects\Cloth.cs" />
     <Compile Include="Coloring.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="Manager.cs" />
-    <Compile Include="Object.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Commands\PlayerCommands.cs" />
+    <Compile Include="Objects\Item.cs" />
+    <Compile Include="Objects\Itemy.cs" />
+    <Compile Include="Objects\Location.cs" />
+    <Compile Include="Management\Manager.cs" />
+    <Compile Include="Management\ManagerFights.cs" />
+    <Compile Include="Objects\NPC.cs" />
+    <Compile Include="Objects\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SFuns.cs" />
-    <Compile Include="Shower.cs" />
-    <Compile Include="Thing.cs" />
+    <Compile Include="Management\SFuns.cs" />
+    <Compile Include="Management\Shower.cs" />
+    <Compile Include="Objects\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

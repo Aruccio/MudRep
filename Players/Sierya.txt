@@ -1,8 +1,8 @@
-Sierya
-drobna zielonooka
+sierya
+drobna brazowooka
 kobieta
-wampir
-odmiana,Sierya,Sieryi,Sierye,Sierye,Sierya,Sieryi
+dampir
+odmiana,sierya,sieryi,sieryi,sierye,sierya,sieryi
 startloc 1
 currentloc 1
-i czarna-matowa-glewia,dlugi-wilczy-plaszcz,brazowa-chusta,sfatygowane-kamuflujace-gogle
+iw,czarna-matowa-glewia

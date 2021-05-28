@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Program
 {
-    public class Player : Object
+    public class NPC :Character
     {
         string name, shortN, longN;
         string gender, race;
-        string[] odmiana;
-        Location currentLoc, startLoc;
-        List<Thing> eq;
-        public Player()
+        string[] odmianaPoj, odmianaMn;
+        Weapon weap;
+        List<Weapon> eqweap;
+        //     List<Armor> eqarmor;
+        //    List<Cloth> eqcloth; 
+        public NPC()
         {
 
         }
 
 
-        public Player(string name, string shortN)
+        public NPC(string name, string shortN)
         {
             this.name = name;
             this.shortN = shortN;
@@ -56,28 +57,28 @@ namespace Program
             set { race = value; }
         }
 
-        public new string[] OdmianaPoj
+        public string[] OdmianaPoj
         {
-            get { return odmiana; }
-            set { odmiana = value; }
+            get { return odmianaPoj; }
+            set { odmianaPoj = value; }
         }
 
-        public Location StartLoc
+        public string[] OdmianaMn
         {
-            get { return startLoc; }
-            set { startLoc = value; }
+            get { return odmianaMn;  }
+            set { odmianaMn = value; }
         }
 
-        public Location CurrentLoc
+        public List<Weapon> EqWeap
         {
-            get { return currentLoc; }
-            set { currentLoc = value; }
+            get { return eqweap; }
+            set { eqweap = value; }
         }
 
-        public List<Thing> Eq
+        public Weapon WeaponInHand
         {
-            get { return eq; }
-            set { eq = value; }
+            get { return weap; }
+            set { weap = value; }
         }
     }
 }

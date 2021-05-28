@@ -2,7 +2,10 @@ name
 shortN
 gender
 race
-odmiana,mianownik,dopelnias,celownik,biernik,narzednik,miejscownik
+odmiana,mianownik,dopelnias,celownik,biernik,narzednik,miejscownik (z malych liter)
 startloc idlokacji
 currentloc idlokacji
-i ekwipunek,ekwipunek,ekwipunek,itakdalej
+iw bron,bron2,brontrzy
+ia armory
+ic ubrania
+ii itemy
