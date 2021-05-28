@@ -51,7 +51,6 @@ namespace Program
             p.CurrentLoc = newLocation;
             p.CurrentLoc.Characters.Add(p);
             Console.WriteLine("Idziesz na " + command + ".");
-            // Console.WriteLine("[INFO] Przemieszczono " + p.OdmianaPoj[3]+" na "+command+" od "+current.Id+" Lokacja nr "+id+".");
 
             return newLocation;
         }
@@ -134,8 +133,8 @@ namespace Program
                 {
                     if (id != Convert.ToInt32(sr.ReadLine())) return null;
                     loc.Id = id;
-                    loc.ShortN = sr.ReadLine();
-                    loc.LongN = sr.ReadLine();
+                    loc.Short = sr.ReadLine();
+                    loc.Long = sr.ReadLine();
                     loc.Exits = new List<string[]>();
                     loc.Things = new List<string[]>();
                     string line;
@@ -200,7 +199,7 @@ namespace Program
                     //short
                     string shortn = sr.ReadLine();
                     if (!shortn.Contains(" ")) return null;
-                    p.ShortN = shortn;
+                    p.Short = shortn;
 
                     //plec
                     string gender = sr.ReadLine();
@@ -213,17 +212,16 @@ namespace Program
 
                     //odmiana przez przypadki. Pamietac o kolejnosci!
                     string[] odmiana = new string[7];
-                    p.OdmianaPoj = new string[6];
                     string odmianaStr = sr.ReadLine();
                     if (odmianaStr.Contains("odmiana"))
                     {
                         odmiana = odmianaStr.Split(',');
-                        p.OdmianaPoj[0] = name; //mianownik
-                        p.OdmianaPoj[1] = odmiana[2]; //dopelniacz
-                        p.OdmianaPoj[2] = odmiana[3]; //celownik
-                        p.OdmianaPoj[3] = odmiana[4]; //biernik
-                        p.OdmianaPoj[4] = odmiana[5]; //narzednik
-                        p.OdmianaPoj[5] = odmiana[6]; //miejscownik
+                        p.Odm.Mianownik = name;
+                        p.Odm.Dopelniacz = odmiana[2];
+                        p.Odm.Celownik = odmiana[3];
+                        p.Odm.Biernik = odmiana[4];
+                        p.Odm.Narzednik = odmiana[5];
+                        p.Odm.Miejscownik = odmiana[6];
 
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY."); }
@@ -273,7 +271,7 @@ namespace Program
                     //short
                     string shortn = sr.ReadLine();
                     if (!shortn.Contains(" ")) return null;
-                    p.ShortN = shortn;
+                    p.Short = shortn;
 
                     //plec
                     string gender = sr.ReadLine();
@@ -286,17 +284,17 @@ namespace Program
 
                     //odmiana przez przypadki. Pamietac o kolejnosci!
                     string[] odmiana = new string[7];
-                    p.OdmianaPoj = new string[6];
                     string odmianaStr = sr.ReadLine();
                     if (odmianaStr.Contains("odmiana"))
                     {
                         odmiana = odmianaStr.Split(',');
-                        p.OdmianaPoj[0] = name; //mianownik
-                        p.OdmianaPoj[1] = odmiana[2]; //dopelniacz
-                        p.OdmianaPoj[2] = odmiana[3]; //celownik
-                        p.OdmianaPoj[3] = odmiana[4]; //biernik
-                        p.OdmianaPoj[4] = odmiana[5]; //narzednik
-                        p.OdmianaPoj[5] = odmiana[6]; //miejscownik
+                        p.Odm.Mianownik = name;
+                        p.Odm.Dopelniacz = odmiana[2];
+                        p.Odm.Celownik = odmiana[3];
+                        p.Odm.Biernik = odmiana[4];
+                        p.Odm.Narzednik = odmiana[5];
+                        p.Odm.Miejscownik = odmiana[6];
+
 
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY."); }
@@ -351,7 +349,7 @@ namespace Program
                     w.Name = sr.ReadLine().Replace('-', ' ');
 
                     //long
-                    w.LongN = sr.ReadLine();
+                    w.Long = sr.ReadLine();
 
                     string temp = sr.ReadLine();
                     if (temp == "twohand")
@@ -362,18 +360,17 @@ namespace Program
 
                     //odmiana przez przypadki. Pamietac o kolejnosci!
                     string[] odmiana = new string[7];
-                    w.OdmianaPoj = new string[6];
-                    w.OdmianaMn = new string[6];
                     string odmianaStr = sr.ReadLine();
                     if (odmianaStr.Contains("odmiana"))
                     {
                         odmiana = odmianaStr.Split(',');
-                        w.OdmianaPoj[0] = name; //mianownik
-                        w.OdmianaPoj[1] = odmiana[2]; //dopelniacz
-                        w.OdmianaPoj[2] = odmiana[3]; //celownik
-                        w.OdmianaPoj[3] = odmiana[4]; //biernik
-                        w.OdmianaPoj[4] = odmiana[5]; //narzednik
-                        w.OdmianaPoj[5] = odmiana[6]; //miejscownik
+                        w.Odm.Mianownik = name;
+                        w.Odm.Dopelniacz = odmiana[2];
+                        w.Odm.Celownik = odmiana[3];
+                        w.Odm.Biernik = odmiana[4];
+                        w.Odm.Narzednik = odmiana[5];
+                        w.Odm.Miejscownik = odmiana[6];
+
 
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY BRONI (pojedyncza)."); }
@@ -382,12 +379,12 @@ namespace Program
                     if (odmianaStr.Contains("odmiana"))
                     {
                         odmiana = odmianaStr.Split(',');
-                        w.OdmianaMn[0] = odmiana[1]; //mianownik
-                        w.OdmianaMn[1] = odmiana[2]; //dopelniacz
-                        w.OdmianaMn[2] = odmiana[3]; //celownik
-                        w.OdmianaMn[3] = odmiana[4]; //biernik
-                        w.OdmianaMn[4] = odmiana[5]; //narzednik
-                        w.OdmianaMn[5] = odmiana[6]; //miejscownik
+                        w.Odm.MMianownik = name;
+                        w.Odm.MDopelniacz = odmiana[2];
+                        w.Odm.MCelownik = odmiana[3];
+                        w.Odm.MBiernik = odmiana[4];
+                        w.Odm.MNarzednik = odmiana[5];
+                        w.Odm.MMiejscownik = odmiana[6];
 
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY BRONI (mnoga)."); }
@@ -413,15 +410,11 @@ namespace Program
             using (sw)
             {
                 sw.WriteLine(p.Name);
-                sw.WriteLine(p.ShortN);
+                sw.WriteLine(p.Short);
                 sw.WriteLine(p.Gender);
                 sw.WriteLine(p.Race);
-                sw.Write("odmiana");
-                for (int i = 0; i < p.OdmianaPoj.Length; i++)
-                {
-                    sw.Write("," + p.OdmianaPoj[i]);
-                }
-
+                sw.Write("odmiana,");
+                sw.Write(p.Odm.Mianownik + "," + p.Odm.Dopelniacz + "," + p.Odm.Celownik + "," + p.Odm.Biernik + "," + p.Odm.Narzednik + "," + p.Odm.Miejscownik);
                 sw.Write(p.StartLoc);
                 sw.Write(p.CurrentLoc);
 

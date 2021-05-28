@@ -1,3 +1,6 @@
+1.
+
+
 Podzial na foldery:
 -> Command: PlayerCommands
 -> Management: Manager, ManagerFights,SFuns, Shower

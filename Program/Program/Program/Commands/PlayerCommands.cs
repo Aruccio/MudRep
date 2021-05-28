@@ -22,9 +22,9 @@ namespace Program.Commands
             Console.WriteLine("Masz przy sobie: ");
             for(int i=0; i<p.EqWeap.Count-1;i++)
             {
-                Console.Write("+ "+p.EqWeap[i].OdmianaPoj[3]+",");
+                Console.Write("+ "+p.EqWeap[i].Odm.Biernik+",");
             }
-            Console.Write("+ "+p.EqWeap[p.EqWeap.Count-1].OdmianaPoj[3]+".\n");
+            Console.Write("+ "+p.EqWeap[p.EqWeap.Count-1].Odm.Biernik+".\n");
 
         }
 
@@ -63,7 +63,7 @@ namespace Program.Commands
                 if (objs[i] is NPC)
                 {
                     n = objs[i] as NPC;
-                    if (kogo == n.OdmianaPoj[3])
+                    if (kogo == n.Odm.Biernik)
                     {
                         Shower.ShowCharacter(n, false);
                         break;
@@ -77,7 +77,7 @@ namespace Program.Commands
                         Shower.ShowCharacter(p, true);
                         break;
                     }
-                    else if (kogo == pl.OdmianaPoj[3])
+                    else if (kogo == pl.Odm.Biernik)
                     {
                         Shower.ShowCharacter(pl, false);
                         break;
@@ -86,8 +86,8 @@ namespace Program.Commands
                 else if (objs[i] is Weapon)
                 {
                     weap = objs[i] as Weapon;
-                    string third = weap.OdmianaPoj[3].Split(' ')[2];
-                    if (kogo == weap.OdmianaPoj[3] || kogo == third)
+                    string third = weap.Odm.Biernik.Split(' ')[2];
+                    if (kogo == weap.Odm.Biernik || kogo == third)
                     {
                         Shower.ShowItem(weap, false);
                         break;
@@ -129,9 +129,9 @@ namespace Program.Commands
                 if(p.CurrentLoc.Characters[i] is Player)
                 {
                     Player cel = p.CurrentLoc.Characters[i] as Player;
-                    if (cel.OdmianaPoj[3] == kogo)
+                    if (cel.Odm.Biernik == kogo)
                     {
-                        Console.WriteLine("Atakujesz " + SFuns.Up(cel.OdmianaPoj[3]) + ".");
+                        Console.WriteLine("Atakujesz " + SFuns.Up(cel.Odm.Biernik) + ".");
                         p.Infight = true;
                         cel.Infight = true;
                         ManagerFights mf = new ManagerFights(p, cel);
@@ -141,9 +141,9 @@ namespace Program.Commands
                 else if (p.CurrentLoc.Characters[i] is NPC)
                 {
                     NPC cel = p.CurrentLoc.Characters[i] as NPC;
-                    if (cel.OdmianaPoj[3] == kogo)
+                    if (cel.Odm.Biernik == kogo)
                     {
-                        Console.WriteLine("Atakujesz " + SFuns.Up(cel.OdmianaPoj[3]) + ".");
+                        Console.WriteLine("Atakujesz " + SFuns.Up(cel.Odm.Biernik) + ".");
                         p.Infight = true;
                         cel.Infight = true;
                         ManagerFights mf = new ManagerFights(p, cel);

@@ -65,6 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Management\IOdmienialny.cs" />
+    <Compile Include="Management\Odmiana.cs" />
     <Compile Include="Objects\Armor.cs" />
     <Compile Include="Objects\Character.cs" />
     <Compile Include="Objects\Cloth.cs" />

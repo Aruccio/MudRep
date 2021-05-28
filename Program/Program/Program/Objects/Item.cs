@@ -3,43 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Program.Management;
 
 namespace Program
 {
-    public class Item
+    public class Item :IOdmienialny
     {
-        string name, shortN, longN;
-        string[] odmianaPoj, odmianaMn;
         public Item()
-        { }
-
-        public string Name
         {
-            get { return name; }
-            set { name = value; }
-        }
-        public string ShortN
-        {
-            get { return shortN; }
-            set { shortN = value; }
+            Odm = new Odmiana();
         }
 
-        public string LongN
-        {
-            get { return longN; }
-            set { longN = value; }
-        }
+        public string Name { get; set; }
+        public string Short { get; set; }
 
-        public string[] OdmianaPoj
-        {
-            get { return odmianaPoj; }
-            set { odmianaPoj = value; }
-        }
+        public string Long { get; set; }
 
-        public string[] OdmianaMn
-        {
-            get { return odmianaMn; }
-            set { odmianaMn = value; }
-        }
+
+        //        public Odmiana Odm { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Odmiana Odm { get; set; } = new Odmiana();
     }
 }

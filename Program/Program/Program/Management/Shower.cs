@@ -28,8 +28,8 @@ namespace Program
                 NPC n = ch as NPC;
 
                 Console.Write("Masz przed soba ");
-                Coloring.Cyan(SFuns.Up(n.OdmianaPoj[3]) + ". ");
-                Console.WriteLine(Splice("Jest to " + n.ShortN + " " + n.Gender + " ("+n.Race+")."));
+                Coloring.Cyan(SFuns.Up(n.Odm.Biernik) + ". ");
+                Console.WriteLine(Splice("Jest to " + n.Short + " " + n.Gender + " ("+n.Race+")."));
 
 
             }
@@ -42,14 +42,14 @@ namespace Program
                     {
                         Console.Write("Jestes ");
 
-                        Coloring.Cyan(p.OdmianaPoj[0] + ", ");
-                        Console.WriteLine(p.ShortN + " " + p.Gender + " ("+p.Race+").");
+                        Coloring.Cyan(p.Odm.Mianownik + ", ");
+                        Console.WriteLine(p.Short + " " + p.Gender + " ("+p.Race+").");
                     }
                     else
                     {
                         Console.Write("Masz przed soba ");
-                        Coloring.Cyan(p.OdmianaPoj[3] + ". ");
-                        Console.WriteLine(Splice("Jest to " + p.ShortN + " " + p.Gender + " (" + p.Race + ")."));
+                        Coloring.Cyan(p.Odm.Biernik + ". ");
+                        Console.WriteLine(Splice("Jest to " + p.Short + " " + p.Gender + " (" + p.Race + ")."));
                     }
                 }
                 else
@@ -74,26 +74,26 @@ namespace Program
                     if (item is Armor)
                     {
                         Armor ar = item as Armor;
-                        Console.WriteLine("Ogladasz uwaznie " + ar.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(ar.LongN));
+                        Console.WriteLine("Ogladasz uwaznie " + ar.Odm.Biernik + ".");
+                        Console.WriteLine(Splice(ar.Long));
                     }
                     else if (item is Cloth)
                     {
                         Cloth cl = item as Cloth;
-                        Console.WriteLine("Ogladasz uwaznie " + cl.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(cl.LongN));
+                        Console.WriteLine("Ogladasz uwaznie " + cl.Odm.Biernik + ".");
+                        Console.WriteLine(Splice(cl.Long));
                     }
                     else if (item is Itemy)
                     {
                         Itemy it = item as Itemy;
-                        Console.WriteLine("Ogladasz uwaznie " + it.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(it.LongN));
+                        Console.WriteLine("Ogladasz uwaznie " + it.Odm.Biernik + ".");
+                        Console.WriteLine(Splice(it.Long));
                     }
                     else if (item is Weapon)
                     {
                         Weapon weap = item as Weapon;
-                        Console.WriteLine("Ogladasz uwaznie " + weap.OdmianaPoj[3] + ".");
-                        Console.WriteLine(Splice(weap.LongN));
+                        Console.WriteLine("Ogladasz uwaznie " + weap.Odm.Biernik + ".");
+                        Console.WriteLine(Splice(weap.Long));
                     }
 
                 }
@@ -115,9 +115,9 @@ namespace Program
             if(loc!=null)
             {
                 if (longL)
-                    Console.WriteLine(Splice(loc.LongN));
+                    Console.WriteLine(Splice(loc.Long));
                 else
-                    Console.WriteLine(Splice(loc.ShortN));
+                    Console.WriteLine(Splice(loc.Short));
 
             //wyjscia z lokacji
                 List<string> exits = new List<string>();
