@@ -1,4 +1,4 @@
-1.
+CHANGELOG 1
 
 
 Podzial na foldery:
@@ -76,3 +76,16 @@ Coloring.cs - funkcje zmieniajace kolor tekstu. Inne Console.Write jedynie
 -------------------
 Program.cs
 Obecnie program z tego, co bedzie "na stale" petle na komendy wpisywane przez gracza oraz wywolanie gracza, zeby byl juz zaladowany
+
+
+
+==============================================================
+==============================================================
+CHANGELOG 2
+
+
+Usuniecie ze wszystkich klas OdmianaPoj i OdmianaMn
+Utworzenie interfejsu IOdmienialny i klasy Odmiana
+Zmienienie wszystkich odmian na nowy kod (ten interfejs i klase)
+Skrocenie wszystkich property do samego {get;set}
+Poprawienie dziedziczenia (wrzucenie Name, Short i Long do rodzicow, wyrzucenie z dzieci)
