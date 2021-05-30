@@ -15,6 +15,15 @@ namespace Program
 
         }
 
+        public static void Cechy(Character ch)
+        {
+            Console.WriteLine("Jestes " + ch.SilaStr[0] + " i brakuje ci " + ch.SilaStr[1] + " by wyzej ocenic swoja sile.");
+            Console.WriteLine("Jestes " + ch.ZrecznoscStr[0] + " i brakuje ci " + ch.ZrecznoscStr[1] + " by wyzej ocenic swoja zrecznosc.");
+            Console.WriteLine("Jestes " + ch.WytrzymaloscStr[0] + " i brakuje ci " + ch.WytrzymaloscStr[1] + " by wyzej ocenic swoja wytrzymalosc.");
+            Console.WriteLine("Jestes " + ch.IntelektStr[0] + " i brakuje ci " + ch.IntelektStr[1] + " by wyzej ocenic swoj intelekt.");
+            Console.WriteLine("Jestes " + ch.OdwagaStr[0] + " i brakuje ci " + ch.OdwagaStr[1] + " by wyzej ocenic swoja odwage.");
+        }
+
 
         /// <summary>
         /// pokazuje "Jestes Sierya, short" albo w 3. osobie. Nic 

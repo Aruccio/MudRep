@@ -25,9 +25,6 @@ namespace Program
         }
 
         public string Long { get; set; }
-
-        public string Gender { get; set; }
-
         public string Race { get; set; }
 
         public Location StartLoc { get; set; }

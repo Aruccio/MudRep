@@ -13,6 +13,12 @@ namespace Program.Commands
         {
             this.p = p;
         }
+
+        public void Cechy()
+        {
+            Shower.Cechy(p);
+        }
+
         /// <summary>
         /// drukuje ekwipunek gracza
         /// </summary>
@@ -152,6 +158,11 @@ namespace Program.Commands
                 }
             }
 
+        }
+
+        public void Zerknij()
+        {
+            Shower.ShowLocation(p.CurrentLoc, false);
         }
     }
 }

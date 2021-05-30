@@ -98,16 +98,24 @@ namespace Program
 
             switch (firstcom)
             {
+                case "cechy": pc.Cechy();
+                    break;
                 case "i": pc.I();
                     break;
                 case "ob": pc.Ob(restcom);
+                    break;
+                case "obejrzyj": pc.Ob(restcom);
                     break;
                 case "powiedz":
                     pc.Powiedz(restcom);
                     break;
                 case "sp": pc.Sp();
                     break;
+                case "spojrz": pc.Sp();
+                    break;
                 case "zabij": pc.Zabij(restcom);
+                    break;
+                case "zerknij": pc.Zerknij();
                     break;
                 default: Console.WriteLine("Slucham?");
                     break;
@@ -231,6 +239,13 @@ namespace Program
                     //    curLoc = curLoc.Substring(11);
                     //    p.CurrentLoc = ReadLocation(Convert.ToInt32(curLoc));
                     //}
+                    string[] cechy = sr.ReadLine().Split(',');
+                    p.Sila = Convert.ToInt32(cechy[0]);
+                    p.Zrecznosc = Convert.ToInt32(cechy[1]);
+                    p.Wytrzymalosc = Convert.ToInt32(cechy[2]);
+                    p.Intelekt = Convert.ToInt32(cechy[3]);
+                    p.Odwaga = Convert.ToInt32(cechy[4]);
+                    p.DoCech();
 
                     string[] eq = sr.ReadLine().Split(',');
 
@@ -312,6 +327,15 @@ namespace Program
                         curLoc = curLoc.Substring(11);
                         p.CurrentLoc = ReadLocation(Convert.ToInt32(curLoc));
                     }
+
+                    //cechy
+                    string[] cechy = sr.ReadLine().Split(',');
+                    p.Sila = Convert.ToInt32(cechy[0]);
+                    p.Zrecznosc = Convert.ToInt32(cechy[1]);
+                    p.Wytrzymalosc = Convert.ToInt32(cechy[2]);
+                    p.Intelekt = Convert.ToInt32(cechy[3]);
+                    p.Odwaga = Convert.ToInt32(cechy[4]);
+                    p.DoCech();
 
                     //bronie
                     string[] eqw = sr.ReadLine().Split(',');//bronie

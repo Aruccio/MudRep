@@ -1,8 +1,9 @@
 sierya
 drobna brazowooka
 kobieta
-dampir
+czlowiek
 odmiana,sierya,sieryi,sieryi,sierye,sierya,sieryi
 startloc 1
 currentloc 1
+108,125,99,84,112
 iw,czarna-matowa-glewia

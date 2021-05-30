@@ -1,5 +1,5 @@
 1
-Plac miejski
+Plac miejski.
 Zwyczajny plac miejski, pozwalajacy na oddalenie sie w cztery strony miasta wzdlug dwoch glownych ulic. Widac budynki.
 exit=n,polnoc=2
 exit=s,poludnie=3
