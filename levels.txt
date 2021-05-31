@@ -25,7 +25,7 @@
 |---|--------------|------------------|---------------------|------------------|------------------|
 |12 | legendarnie  | legendarnie      | legendarnie         | legendarnie      | legendarnie      |110-119 
 |---|--------------|------------------|---------------------|------------------|------------------|
-|13 | nadludzko    | nadludzko        | nadludzko           | nadludzko        | nadludzko        |120-129
+|13 | nadludzko    | nadludzko        | nadludzko           | nadludzko        | nadludzko        |120
 +=================================================================================================+
 
 0 - niemozliwie duzo

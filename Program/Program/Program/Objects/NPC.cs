@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Program
 {
-    public class NPC :Character
+    public class NPC : Character
     {
         public NPC()
         {
-
         }
-
 
         public NPC(string name, string shortN)
         {
@@ -24,7 +22,5 @@ namespace Program
         public string Race { get; set; }
 
         public List<Weapon> EqWeap { get; set; }
-
-        public Weapon WeaponInHand { get; set; }
     }
 }

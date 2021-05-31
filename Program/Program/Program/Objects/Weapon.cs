@@ -10,10 +10,10 @@ namespace Program
     {
         public Weapon()
         {
-          
         }
-        public int Hand { get; set; }
 
+        public int Hand { get; set; }
         public int Speed { get; set; }
+        public int Damage { get; set; }
     }
 }

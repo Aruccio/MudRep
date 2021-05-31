@@ -10,13 +10,11 @@ namespace Program
     /// <summary>
     /// Klasa gracza
     /// </summary>
-    public class Player:Character
+    public class Player : Character
     {
         public Player()
         {
-
         }
-
 
         public Player(string name, string shortN)
         {
@@ -32,8 +30,5 @@ namespace Program
         public Location CurrentLoc { get; set; }
 
         public List<Weapon> EqWeap { get; set; }
-
-        public Weapon WeaponInHand { get; set; }
-
     }
 }

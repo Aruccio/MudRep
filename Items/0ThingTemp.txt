@@ -1,6 +1,0 @@
-ReadWeapon, ReadCloth albo ReadArmor
-name
-longN
-onehand,twohand (jesli weapon) albo klatka,ramiona,nogi,dlonie,glowa(jesli cloth lub armor) albo plaszcz (przy czym plaszcz to tez cloth)
-mian,dop,cel,bier,narz,miejsc
-mianmn,dopmn,celmn,biermn,narzmn,miejscmn

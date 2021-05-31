@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Management\IOdmienialny.cs" />
+    <Compile Include="Management\Maths.cs" />
     <Compile Include="Management\Odmiana.cs" />
     <Compile Include="Objects\Armor.cs" />
     <Compile Include="Objects\Character.cs" />

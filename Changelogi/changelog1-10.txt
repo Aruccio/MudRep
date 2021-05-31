@@ -97,3 +97,15 @@ Dodane komendy <obejrzyj>, <spojrz>, <zerknij> i <cechy>
 
 ==============================================================
 ==============================================================
+
+CHANGELOG 4
+
+dodany Damage w Weapon
+dodane HP w characters
+poprawione nadludzkie cechy (nie wyswietla ze iles brakuje do kolejnego)
+WeaponInHand wyladowalo w Character
+dodana klasa Maths, gdzie teraz jest liczenie poczatkowe HP oraz liczenie obrazen postaci od broni, cech i randomowej wartosci
+ManagerFight zmieniony do walki 1v1, zeby bylo prosciej dalej robic. Funkcja Fight i LastingTour przystosowana do liczenia co ture (z enterem lub potwierdzeniem kolejnej tury), wyswietla kondycje co ture oraz w razie smierci gracza lub NPCa przerywa walke i wyswietla zgon.
+
+==============================================================
+==============================================================

@@ -4,29 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Program
 {
     public class Shower
     {
-        
         public Shower()
         {
-
         }
 
         public static void Cechy(Character ch)
         {
-            Console.WriteLine("Jestes " + ch.SilaStr[0] + " i brakuje ci " + ch.SilaStr[1] + " by wyzej ocenic swoja sile.");
-            Console.WriteLine("Jestes " + ch.ZrecznoscStr[0] + " i brakuje ci " + ch.ZrecznoscStr[1] + " by wyzej ocenic swoja zrecznosc.");
-            Console.WriteLine("Jestes " + ch.WytrzymaloscStr[0] + " i brakuje ci " + ch.WytrzymaloscStr[1] + " by wyzej ocenic swoja wytrzymalosc.");
-            Console.WriteLine("Jestes " + ch.IntelektStr[0] + " i brakuje ci " + ch.IntelektStr[1] + " by wyzej ocenic swoj intelekt.");
-            Console.WriteLine("Jestes " + ch.OdwagaStr[0] + " i brakuje ci " + ch.OdwagaStr[1] + " by wyzej ocenic swoja odwage.");
+            if (ch.Sila == 120) Console.WriteLine("Jestes " + ch.SilaStr[0] + ".");
+            else Console.WriteLine("Jestes " + ch.SilaStr[0] + " i brakuje ci " + ch.SilaStr[1] + " by wyzej ocenic swoja sile.");
+
+            if (ch.Zrecznosc == 120) Console.WriteLine("Jestes " + ch.ZrecznoscStr[0] + ".");
+            else Console.WriteLine("Jestes " + ch.ZrecznoscStr[0] + " i brakuje ci " + ch.ZrecznoscStr[1] + " by wyzej ocenic swoja zrecznosc.");
+
+            if (ch.Wytrzymalosc == 120) Console.WriteLine("Jestes " + ch.WytrzymaloscStr[0] + ".");
+            else Console.WriteLine("Jestes " + ch.WytrzymaloscStr[0] + " i brakuje ci " + ch.WytrzymaloscStr[1] + " by wyzej ocenic swoja wytrzymalosc.");
+
+            if (ch.Intelekt == 120) Console.WriteLine("Jestes " + ch.IntelektStr[0] + ".");
+            else Console.WriteLine("Jestes " + ch.IntelektStr[0] + " i brakuje ci " + ch.IntelektStr[1] + " by wyzej ocenic swoj intelekt.");
+
+            if (ch.Odwaga == 120) Console.WriteLine("Jestes " + ch.OdwagaStr[0] + ".");
+            else Console.WriteLine("Jestes " + ch.OdwagaStr[0] + " i brakuje ci " + ch.OdwagaStr[1] + " by wyzej ocenic swoja odwage.");
         }
 
-
         /// <summary>
-        /// pokazuje "Jestes Sierya, short" albo w 3. osobie. Nic 
+        /// pokazuje "Jestes Sierya, short" albo w 3. osobie. Nic
         /// </summary>
         /// <param name="p"> postac </param>
         /// <param name="tomyself"> true jesli to siebie oglada</param>
@@ -38,9 +43,7 @@ namespace Program
 
                 Console.Write("Masz przed soba ");
                 Coloring.Cyan(SFuns.Up(n.Odm.Biernik) + ". ");
-                Console.WriteLine(Splice("Jest to " + n.Short + " " + n.Gender + " ("+n.Race+")."));
-
-
+                Console.WriteLine(Splice("Jest to " + n.Short + " " + n.Gender + " (" + n.Race + ")."));
             }
             else if (ch is Player)
             {
@@ -52,7 +55,7 @@ namespace Program
                         Console.Write("Jestes ");
 
                         Coloring.Cyan(p.Odm.Mianownik + ", ");
-                        Console.WriteLine(p.Short + " " + p.Gender + " ("+p.Race+").");
+                        Console.WriteLine(p.Short + " " + p.Gender + " (" + p.Race + ").");
                     }
                     else
                     {
@@ -104,11 +107,9 @@ namespace Program
                         Console.WriteLine("Ogladasz uwaznie " + weap.Odm.Biernik + ".");
                         Console.WriteLine(Splice(weap.Long));
                     }
-
                 }
                 else if (ocen)
                 {
-
                 }
             }
         }
@@ -121,14 +122,14 @@ namespace Program
         public static void ShowLocation(Location loc, bool longL)
         {
             //opis lokacji
-            if(loc!=null)
+            if (loc != null)
             {
                 if (longL)
                     Console.WriteLine(Splice(loc.Long));
                 else
                     Console.WriteLine(Splice(loc.Short));
 
-            //wyjscia z lokacji
+                //wyjscia z lokacji
                 List<string> exits = new List<string>();
                 for (int i = 0; i < loc.Exits.Count; i++)
                 {
@@ -152,33 +153,27 @@ namespace Program
                     Coloring.Green(exits[exits.Count - 2]);
                     Coloring.Green(" oraz " + exits[exits.Count - 1] + ".\n");
                 }
-                
-
             }
             else
             {
-                Coloring.Red("[INFO]"); 
+                Coloring.Red("[INFO]");
                 Console.Write("Blad, lokacja nie istnieje.");
             }
 
             //NPCe
-         //   loc.NPCs = new List<NPC>();
+            //   loc.NPCs = new List<NPC>();
             if (loc.NPCs.Count > 1)
             {
-                for (int i = 0; i < loc.NPCs.Count-1; i++)
+                for (int i = 0; i < loc.NPCs.Count - 1; i++)
                 {
                     Coloring.Yellow(SFuns.Up(loc.NPCs[i].Name) + ", ");
                 }
-                Coloring.Yellow(SFuns.Up(loc.NPCs[loc.NPCs.Count - 1].Name)+ ".\n");
-               
+                Coloring.Yellow(SFuns.Up(loc.NPCs[loc.NPCs.Count - 1].Name) + ".\n");
             }
-            else if(loc.NPCs.Count==1)
+            else if (loc.NPCs.Count == 1)
             {
                 Coloring.Yellow(SFuns.Up(loc.NPCs[0].Name) + ".\n");
             }
-
-
-
         }
 
         /// <summary>

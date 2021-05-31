@@ -5,6 +5,7 @@ race
 odmiana,mianownik,dopelnias,celownik,biernik,narzednik,miejscownik (z malych liter)
 startloc idlokacji
 currentloc idlokacji
+cechy,0,0,0,0,0
 iw bron,bron2,brontrzy
 ia armory
 ic ubrania

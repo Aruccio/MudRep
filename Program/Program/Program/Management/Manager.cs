@@ -6,26 +6,23 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using Program.Commands;
-
-
+using Program.Management;
 
 namespace Program
 {
-    class Manager
+    internal class Manager
     {
         public Manager()
         {
         }
 
-        static string pathPlayers = @"../../../../../../Players";
-        static string pathLocations = @"../../../../../../Locations";
-        static string pathWeapons = @"../../../../../../Items/Weapons";
-        static string pathCloths = @"../../../../../../Items/Cloths";
-        static string pathArmors = @"../../../../../../Items/Armors";
-        static string pathItemy = @"../../../../../../Items/Itemy";
-        static string pathNPC = @"../../../../../../NPC";
-
-
+        private static string pathPlayers = @"../../../../../../Players";
+        private static string pathLocations = @"../../../../../../Locations";
+        private static string pathWeapons = @"../../../../../../Items/Weapons";
+        private static string pathCloths = @"../../../../../../Items/Cloths";
+        private static string pathArmors = @"../../../../../../Items/Armors";
+        private static string pathItemy = @"../../../../../../Items/Itemy";
+        private static string pathNPC = @"../../../../../../NPC";
 
         /// <summary>
         /// Zmienia polozenie gracza zgodnie z komenda. Tylko mechanicznie. Nic graczowi nie pokazuje.
@@ -36,11 +33,9 @@ namespace Program
         /// <returns></returns>
         public static Location MovePlayer(Player p, Location current, string command)
         {
-
             int id = 0;
             for (int i = 0; i < current.Exits.Count; i++)
             {
-
                 if (current.Exits[i][0].Substring(0, 1) == command)
                 {
                     id = Convert.ToInt32(current.Exits[i][1]);
@@ -55,7 +50,6 @@ namespace Program
             return newLocation;
         }
 
-
         /// <summary>
         /// czyta komende wprowadzana w konsoli(w funkcji to jest string command) i kolejno:
         ///updatuje dostepne wyjscia z lokacji
@@ -65,7 +59,6 @@ namespace Program
         /// <param name="loc">lokacja na ktorej sie znajduje ten gracz</param>
         public static void ReadCommand(Player p, Location loc, PlayerCommands pc)
         {
-
             Console.Write(">> ");
             string command = Console.ReadLine();
 
@@ -94,34 +87,52 @@ namespace Program
                 for (int i = 1; i < comTab.Length; i++)
                     restcom += " " + comTab[i];
 
-            string apostrof = ((char)39).ToString() ;
+            string apostrof = ((char)39).ToString();
 
             switch (firstcom)
             {
-                case "cechy": pc.Cechy();
+                case "cechy":
+                    pc.Cechy();
                     break;
-                case "i": pc.I();
+
+                case "i":
+                    pc.I();
                     break;
-                case "ob": pc.Ob(restcom);
+
+                case "ob":
+                    pc.Ob(restcom);
                     break;
-                case "obejrzyj": pc.Ob(restcom);
+
+                case "obejrzyj":
+                    pc.Ob(restcom);
                     break;
+
                 case "powiedz":
                     pc.Powiedz(restcom);
                     break;
-                case "sp": pc.Sp();
+
+                case "sp":
+                    pc.Sp();
                     break;
-                case "spojrz": pc.Sp();
+
+                case "spojrz":
+                    pc.Sp();
                     break;
-                case "zabij": pc.Zabij(restcom);
+
+                case "zabij":
+                    pc.Zabij(restcom);
                     break;
-                case "zerknij": pc.Zerknij();
+
+                case "zerknij":
+                    pc.Zerknij();
                     break;
-                default: Console.WriteLine("Slucham?");
+
+                case "": break;
+                default:
+                    Console.WriteLine("Slucham?");
                     break;
             }
             //emocje
-
         }
 
         /// <summary>
@@ -171,17 +182,12 @@ namespace Program
                         loc.NPCs.Add(npc);
                         loc.Characters.Add(npc);
                     }
-
-
                 }
-
-
             }
             else
             {
                 return null;
             }
-
 
             return loc;
         }
@@ -196,7 +202,6 @@ namespace Program
             NPC p = new NPC();
             if (File.Exists(pathNPC + "/" + name + ".txt"))
             {
-
                 StreamReader sr = new StreamReader(pathNPC + "/" + name + ".txt");
 
                 using (sr)
@@ -230,7 +235,6 @@ namespace Program
                         p.Odm.Biernik = odmiana[4];
                         p.Odm.Narzednik = odmiana[5];
                         p.Odm.Miejscownik = odmiana[6];
-
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY."); }
                     //string curLoc;
@@ -240,11 +244,11 @@ namespace Program
                     //    p.CurrentLoc = ReadLocation(Convert.ToInt32(curLoc));
                     //}
                     string[] cechy = sr.ReadLine().Split(',');
-                    p.Sila = Convert.ToInt32(cechy[0]);
-                    p.Zrecznosc = Convert.ToInt32(cechy[1]);
-                    p.Wytrzymalosc = Convert.ToInt32(cechy[2]);
-                    p.Intelekt = Convert.ToInt32(cechy[3]);
-                    p.Odwaga = Convert.ToInt32(cechy[4]);
+                    p.Sila = Convert.ToInt32(cechy[1]);
+                    p.Zrecznosc = Convert.ToInt32(cechy[2]);
+                    p.Wytrzymalosc = Convert.ToInt32(cechy[3]);
+                    p.Intelekt = Convert.ToInt32(cechy[4]);
+                    p.Odwaga = Convert.ToInt32(cechy[5]);
                     p.DoCech();
 
                     string[] eq = sr.ReadLine().Split(',');
@@ -256,10 +260,11 @@ namespace Program
                     }
                     p.WeaponInHand = p.EqWeap[0];
                 }
+
+                Maths.PoliczHP(p);
             }
             else
             {
-
                 return null;
             }
             return p;
@@ -275,7 +280,6 @@ namespace Program
             Player p = new Player();
             if (File.Exists(pathPlayers + "/" + name + ".txt"))
             {
-
                 StreamReader sr = new StreamReader(pathPlayers + "/" + name + ".txt");
 
                 using (sr)
@@ -309,8 +313,6 @@ namespace Program
                         p.Odm.Biernik = odmiana[4];
                         p.Odm.Narzednik = odmiana[5];
                         p.Odm.Miejscownik = odmiana[6];
-
-
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY."); }
 
@@ -330,11 +332,11 @@ namespace Program
 
                     //cechy
                     string[] cechy = sr.ReadLine().Split(',');
-                    p.Sila = Convert.ToInt32(cechy[0]);
-                    p.Zrecznosc = Convert.ToInt32(cechy[1]);
-                    p.Wytrzymalosc = Convert.ToInt32(cechy[2]);
-                    p.Intelekt = Convert.ToInt32(cechy[3]);
-                    p.Odwaga = Convert.ToInt32(cechy[4]);
+                    p.Sila = Convert.ToInt32(cechy[1]);
+                    p.Zrecznosc = Convert.ToInt32(cechy[2]);
+                    p.Wytrzymalosc = Convert.ToInt32(cechy[3]);
+                    p.Intelekt = Convert.ToInt32(cechy[4]);
+                    p.Odwaga = Convert.ToInt32(cechy[5]);
                     p.DoCech();
 
                     //bronie
@@ -344,8 +346,8 @@ namespace Program
                         p.EqWeap.Add(ReadWeapon(eqw[i]));
 
                     p.WeaponInHand = p.EqWeap[0];
-
                 }
+                Maths.PoliczHP(p);
             }
             else
             {
@@ -394,8 +396,6 @@ namespace Program
                         w.Odm.Biernik = odmiana[4];
                         w.Odm.Narzednik = odmiana[5];
                         w.Odm.Miejscownik = odmiana[6];
-
-
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY BRONI (pojedyncza)."); }
 
@@ -409,15 +409,14 @@ namespace Program
                         w.Odm.MBiernik = odmiana[4];
                         w.Odm.MNarzednik = odmiana[5];
                         w.Odm.MMiejscownik = odmiana[6];
-
                     }
                     else { Console.WriteLine("BŁĄD ODMIANY BRONI (mnoga)."); }
 
-                    string speedstr = sr.ReadLine();
+                    string speedstr = sr.ReadLine().Split(',')[1];
                     w.Speed = Convert.ToInt32(speedstr);
-
+                    string damagestr = sr.ReadLine().Split(',')[1];
+                    w.Damage = Convert.ToInt32(damagestr);
                 }
-
             }
 
             return w;
@@ -448,7 +447,5 @@ namespace Program
                 //sw.WriteLine(p.Eq[p.Eq.Count - 1].NameF());
             }
         }
-
-
     }
 }

@@ -20,11 +20,15 @@ namespace Program
         public int Intelekt { get; set; }
         public int Odwaga { get; set; }
 
+        public double HP { get; set; }
+
         public string[] SilaStr { get; set; } = new string[2] { "", "" };
         public string[] ZrecznoscStr { get; set; } = new string[2] { "", "" };
         public string[] WytrzymaloscStr { get; set; } = new string[2] { "", "" };
         public string[] IntelektStr { get; set; } = new string[2] { "", "" };
         public string[] OdwagaStr { get; set; } = new string[2] { "", "" };
+
+        public Weapon WeaponInHand { get; set; }
 
         public void DoCech()
         {

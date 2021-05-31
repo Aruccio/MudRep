@@ -3,5 +3,5 @@ szarooki jasnobrody
 mezczyzna
 wampir
 odmiana,margas,margasa,margasowi,margasa,margasie,margasem
-84,82,85,70,78
+cechy,84,82,85,70,78
 iw,krotki-waski-miecz

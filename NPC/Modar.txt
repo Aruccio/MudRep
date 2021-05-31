@@ -3,5 +3,5 @@ lysy masywny
 mezczyzna
 czlowiek
 odmiana,modar,modara,modarowi,modara,modarem,modarze
-90,90,90,90,90
+cechy,90,90,90,90,90
 iw,krotki-waski-miecz

@@ -3,4 +3,5 @@ Jest to wykonana z ciemnego polakierowanego na czarno drewna, dodatkowo poddaneg
 twohand
 odmiana,czarna matowa glewia,czarnej matowej glewii,czarnej matowej glewii,czarna matowa glewie,czarna matowa glewia,czarnej matowej glewii
 odmiana,czerne matowe glewie,czarnych matowych glewii,czarnym matowym glewiom,czarne matowe glewie,czarnymi matowymi glewiami,czarnych matowych glewiach
-6
+speed,6
+damage,15
