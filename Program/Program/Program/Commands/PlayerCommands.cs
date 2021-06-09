@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Program.Objects;
 
 namespace Program.Commands
 {
     public class PlayerCommands
     {
-        Player p;
+        private Player p;
+
         public PlayerCommands(Player p)
         {
             this.p = p;
@@ -26,12 +28,16 @@ namespace Program.Commands
         {
             Shower.ShowCharacter(p, true);
             Console.WriteLine("Masz przy sobie: ");
-            for(int i=0; i<p.EqWeap.Count-1;i++)
+            for (int i = 1; i < p.EqContainers.Count - 1; i++)
             {
-                Console.Write("+ "+p.EqWeap[i].Odm.Biernik+",");
+                Console.WriteLine("+ " + p.EqContainers[i].Odm.Biernik + ",");
             }
-            Console.Write("+ "+p.EqWeap[p.EqWeap.Count-1].Odm.Biernik+".\n");
-
+            Console.Write("+ " + p.EqContainers[p.EqContainers.Count - 1].Odm.Biernik + ".\n");
+            for (int i = 0; i < p.EqWeap.Count - 1; i++)
+            {
+                Console.WriteLine("+ " + p.EqWeap[i].Odm.Biernik + ",");
+            }
+            Console.Write("+ " + p.EqWeap[p.EqWeap.Count - 1].Odm.Biernik + ".\n");
         }
 
         /// <summary>
@@ -48,6 +54,7 @@ namespace Program.Commands
             Itemy it = new Itemy();
             Weapon weap = new Weapon();
             Armor arm = new Armor();
+            Container cont = new Container();
 
             List<Object> objs = new List<Object>();
             objs.Add(p); //dla obejrzenia siebie
@@ -56,6 +63,11 @@ namespace Program.Commands
             for (int i = 0; i < p.CurrentLoc.Characters.Count; i++)
             {
                 objs.Add(p.CurrentLoc.Characters[i]);
+            }
+            //dla obejrzenia ekwipunku-pojemnikow gracza
+            for (int i = 0; i < p.EqContainers.Count; i++)
+            {
+                objs.Add(p.EqContainers[i]);
             }
             //dla obejrzenia ekwipunku-broni gracza
             for (int i = 0; i < p.EqWeap.Count; i++)
@@ -99,10 +111,17 @@ namespace Program.Commands
                         break;
                     }
                 }
+                else if (objs[i] is Container)
+                {
+                    cont = objs[i] as Container;
+                    string third = cont.Odm.Biernik.Split(' ')[2];
+                    if (kogo == cont.Odm.Biernik || kogo == third)
+                    {
+                        Shower.ShowItem(cont, false);
+                        break;
+                    }
+                }
             }
-
-
-
         }
 
         /// <summary>
@@ -130,9 +149,9 @@ namespace Program.Commands
         public void Zabij(string kogo)
         {
             kogo = kogo.Replace(" ", "").ToLower();
-            for(int i=0; i<p.CurrentLoc.Characters.Count; i++)
+            for (int i = 0; i < p.CurrentLoc.Characters.Count; i++)
             {
-                if(p.CurrentLoc.Characters[i] is Player)
+                if (p.CurrentLoc.Characters[i] is Player)
                 {
                     Player cel = p.CurrentLoc.Characters[i] as Player;
                     if (cel.Odm.Biernik == kogo)
@@ -157,7 +176,6 @@ namespace Program.Commands
                     }
                 }
             }
-
         }
 
         public void Zerknij()

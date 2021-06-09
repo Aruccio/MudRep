@@ -7,44 +7,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using Program.Commands;
+using NetMQ.Sockets;
+using NetMQ;
+using System.Threading;
 
 namespace Program
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var shower = new Shower();
 
             string name = "Sierya";
             int id = 1;
-            
+
             Player p = Manager.ReadPlayer(name);
             PlayerCommands pc = new PlayerCommands(p);
             NPC n = new NPC();
 
-       
             /*
             //zostawiam to zeby pokazac wywolanie funkcji po stringu nazwy
             MethodInfo invoked = shower.GetType().GetMethod("ShowPlayer");
             Console.WriteLine();
             invoked.Invoke(shower, new object[] {p,true });
             */
-
+            //      using (var client = new RequestSocket())
+            //      {
+            //          client.Connect("tcp://localhost:5555");
             string command = "";
-            while(command!="zakoncz")
+            while (command != "zakoncz")
             {
-                Console.WriteLine();
                 Manager.ReadCommand(p, p.CurrentLoc, pc);
+                Console.WriteLine();
             }
 
+            Manager.Save(p, p.CurrentLoc);
 
-            Console.ReadKey();
-
+            //    }
         }
-
-
-
-       
     }
 }

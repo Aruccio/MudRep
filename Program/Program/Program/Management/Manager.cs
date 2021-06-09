@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using Program.Commands;
 using Program.Management;
+using Program.Objects;
 
 namespace Program
 {
@@ -23,6 +24,7 @@ namespace Program
         private static string pathArmors = @"../../../../../../Items/Armors";
         private static string pathItemy = @"../../../../../../Items/Itemy";
         private static string pathNPC = @"../../../../../../NPC";
+        private static string pathContainers = @"../../../../../../Items/Containers";
 
         /// <summary>
         /// Zmienia polozenie gracza zgodnie z komenda. Tylko mechanicznie. Nic graczowi nie pokazuje.
@@ -72,8 +74,9 @@ namespace Program
                 if (command == dirs[i][0])
                 {
                     Location newLoc = MovePlayer(p, loc, command);
+                    WriteLocation(loc);
                     Shower.ShowLocation(newLoc, true);
-                    return;
+                    break;
                 }
             }
 
@@ -127,12 +130,83 @@ namespace Program
                     pc.Zerknij();
                     break;
 
+                case "zakoncz":
+                    Save(p, loc);
+                    break;
+
                 case "": break;
                 default:
                     Console.WriteLine("Slucham?");
                     break;
             }
             //emocje
+
+            //    return toSend;
+        }
+
+        /// <summary>
+        /// tworzy obiekt Container z pliku folderu Pojemniki
+        /// </summary>
+        /// <param name="name">nazwa pliku, z myslnikami</param>
+        /// <returns></returns>
+        public static Container ReadContainer(string name)
+        {
+            Container c = new Container();
+            if (File.Exists(pathContainers + "/" + name + ".txt"))
+            {
+                StreamReader sr = new StreamReader(pathContainers + "/" + name + ".txt");
+
+                using (sr)
+                {
+                    //nazwa bez myslnikow
+                    c.Name = sr.ReadLine().Replace('-', ' ');
+
+                    //long
+                    c.Long = sr.ReadLine();
+
+                    //odmiana przez przypadki. Pamietac o kolejnosci!
+                    string[] odmiana = new string[7];
+                    string odmianaStr = sr.ReadLine();
+                    if (odmianaStr.Contains("odmiana"))
+                    {
+                        odmiana = odmianaStr.Split(',');
+                        c.Odm.Mianownik = name.Replace('-', ' ');
+                        c.Odm.Dopelniacz = odmiana[2];
+                        c.Odm.Celownik = odmiana[3];
+                        c.Odm.Biernik = odmiana[4];
+                        c.Odm.Narzednik = odmiana[5];
+                        c.Odm.Miejscownik = odmiana[6];
+                    }
+                    else { Console.WriteLine("BŁĄD ODMIANY BRONI (pojedyncza)."); }
+
+                    odmianaStr = sr.ReadLine();
+                    if (odmianaStr.Contains("odmiana"))
+                    {
+                        odmiana = odmianaStr.Split(',');
+                        c.Odm.MMianownik = odmiana[1];
+                        c.Odm.MDopelniacz = odmiana[2];
+                        c.Odm.MCelownik = odmiana[3];
+                        c.Odm.MBiernik = odmiana[4];
+                        c.Odm.MNarzednik = odmiana[5];
+                        c.Odm.MMiejscownik = odmiana[6];
+                    }
+                    else { Console.WriteLine("BŁĄD ODMIANY BRONI (mnoga)."); }
+                    c.Closed = false;
+
+                    string[] zawartoscp = sr.ReadLine().Split(',');
+                    string[] zawartoscw = sr.ReadLine().Split(',');
+                    string[] zawartosca = sr.ReadLine().Split(',');
+                    string[] zawartoscc = sr.ReadLine().Split(',');
+                    string[] zawartosci = sr.ReadLine().Split(',');
+                    for (int i = 1; i < zawartoscp.Length; i++) c.Zawartosc.Add(ReadContainer(zawartoscp[i]));
+                    for (int i = 1; i < zawartoscw.Length; i++) c.Zawartosc.Add(ReadWeapon(zawartoscw[i]));
+                    //  for (int i = 1; i < zawartosca.Length; i++) c.Zawartosc.Add(ReadArmor(zawartoscp[i]) as Item);
+                    //  for (int i = 1; i < zawartoscc.Length; i++) c.Zawartosc.Add(ReadCloth(zawartoscp[i]) as Item);
+                    //  for (int i = 1; i < zawartosci.Length; i++) c.Zawartosc.Add(ReadItemy(zawartoscp[i]) as Item);
+                }
+            }
+
+            return c;
         }
 
         /// <summary>
@@ -166,11 +240,11 @@ namespace Program
                     }
 
                     //rzeczy na lokacji
-                    while ((line = sr.ReadLine()) != null && line.Contains("thing"))
-                    {
-                        string[] splited = line.Split('=');
-                        loc.Things.Add(new string[] { splited[1], splited[2], splited[3] });
-                    }
+                    //while ((line = sr.ReadLine()) != null && line.Contains("thing"))
+                    //{
+                    //    string[] splited = line.Split('=');
+                    //    loc.Things.Add(new string[] { splited[1], splited[2], splited[3] });
+                    //}
 
                     //npce na lokacji
                     loc.NPCs = new List<NPC>();
@@ -320,7 +394,7 @@ namespace Program
                     string curLoc, startLoc;
                     if ((startLoc = sr.ReadLine()) != null)
                     {
-                        startLoc = startLoc.Substring(8);
+                        startLoc = startLoc.Substring(9);
                         p.StartLoc = ReadLocation(Convert.ToInt32(startLoc));
                     }
 
@@ -339,11 +413,21 @@ namespace Program
                     p.Odwaga = Convert.ToInt32(cechy[5]);
                     p.DoCech();
 
+                    //pojemniki
+                    string[] eqp = sr.ReadLine().Split(',');
+                    p.EqContainers = new List<Container>();
+                    for (int i = 1; i < eqp.Length; i++)
+                    {
+                        p.EqContainers.Add(ReadContainer(eqp[i]));
+                    }
+
                     //bronie
-                    string[] eqw = sr.ReadLine().Split(',');//bronie
+                    string[] eqw = sr.ReadLine().Split(',');
                     p.EqWeap = new List<Weapon>();
                     for (int i = 1; i < eqw.Length; i++)
+                    {
                         p.EqWeap.Add(ReadWeapon(eqw[i]));
+                    }
 
                     p.WeaponInHand = p.EqWeap[0];
                 }
@@ -390,7 +474,7 @@ namespace Program
                     if (odmianaStr.Contains("odmiana"))
                     {
                         odmiana = odmianaStr.Split(',');
-                        w.Odm.Mianownik = name;
+                        w.Odm.Mianownik = name.Replace('-', ' ');
                         w.Odm.Dopelniacz = odmiana[2];
                         w.Odm.Celownik = odmiana[3];
                         w.Odm.Biernik = odmiana[4];
@@ -403,7 +487,7 @@ namespace Program
                     if (odmianaStr.Contains("odmiana"))
                     {
                         odmiana = odmianaStr.Split(',');
-                        w.Odm.MMianownik = name;
+                        w.Odm.MMianownik = odmiana[1];
                         w.Odm.MDopelniacz = odmiana[2];
                         w.Odm.MCelownik = odmiana[3];
                         w.Odm.MBiernik = odmiana[4];
@@ -422,6 +506,36 @@ namespace Program
             return w;
         }
 
+        public static void Save(Player p, Location loc)
+        {
+            WritePlayer(p);
+            Coloring.Red("ZAKONCZONO.\n Program zostanie wylaczony.");
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
+
+        public static void WriteLocation(Location loc)
+        {
+            StreamWriter sw = new StreamWriter(pathLocations + "/" + loc.Id + ".txt");
+
+            using (sw)
+            {
+                sw.WriteLine(loc.Id);
+                sw.WriteLine(loc.Short);
+                for (int i = 0; i < loc.Exits.Count; i++)
+                {
+                    sw.WriteLine("exits=" + loc.Exits[i][0] + "=" + loc.Exits[i][1]);
+                }
+
+                sw.WriteLine();
+
+                for (int i = 0; i < loc.NPCs.Count; i++)
+                {
+                    sw.WriteLine("npc=" + loc.NPCs[i].Name);
+                }
+            }
+        }
+
         /// <summary>
         /// zapisuje obiekt gracza do pliku o podanej sciezce
         /// </summary>
@@ -437,14 +551,22 @@ namespace Program
                 sw.WriteLine(p.Gender);
                 sw.WriteLine(p.Race);
                 sw.Write("odmiana,");
-                sw.Write(p.Odm.Mianownik + "," + p.Odm.Dopelniacz + "," + p.Odm.Celownik + "," + p.Odm.Biernik + "," + p.Odm.Narzednik + "," + p.Odm.Miejscownik);
-                sw.Write(p.StartLoc);
-                sw.Write(p.CurrentLoc);
-
-                sw.Write("i ");
-                //for (int i = 0; i < p.Eq.Count - 1; i++)
-                //    sw.Write(p.Eq[i].NameF() + ",");
-                //sw.WriteLine(p.Eq[p.Eq.Count - 1].NameF());
+                sw.WriteLine(p.Odm.Mianownik + "," + p.Odm.Dopelniacz + "," + p.Odm.Celownik + "," + p.Odm.Biernik + "," + p.Odm.Narzednik + "," + p.Odm.Miejscownik);
+                sw.WriteLine("startloc," + p.StartLoc.Id);
+                sw.WriteLine("currentloc," + p.CurrentLoc.Id);
+                sw.WriteLine("cechy," + p.Sila + "," + p.Zrecznosc + "," + p.Wytrzymalosc + "," + p.Intelekt + "," + p.Odwaga);
+                sw.Write("ip,");
+                if (p.EqContainers.Count > 0)
+                {
+                    for (int i = 0; i < p.EqContainers.Count - 1; i++) sw.Write(p.EqContainers[i] + ",");
+                    sw.Write(p.EqContainers[p.EqContainers.Count - 1].Name.Replace(' ', '-'));
+                }
+                sw.Write("iw,");
+                if (p.EqWeap.Count > 0)
+                {
+                    for (int i = 0; i < p.EqWeap.Count - 1; i++) sw.Write(p.EqWeap[i] + ",");
+                    sw.Write(p.EqWeap[p.EqWeap.Count - 1].Name.Replace(' ', '-'));
+                }
             }
         }
     }

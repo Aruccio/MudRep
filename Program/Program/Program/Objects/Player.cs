@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Program.Objects;
 
 namespace Program
 {
@@ -30,5 +31,7 @@ namespace Program
         public Location CurrentLoc { get; set; }
 
         public List<Weapon> EqWeap { get; set; }
+
+        public List<Container> EqContainers { get; set; }
     }
 }

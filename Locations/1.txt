@@ -6,9 +6,6 @@ exit=s,poludnie=3
 exit=e,wschod=4
 exit=w,zachod=5
 
-thing=obejrzyj=budynki=Zwyczajne, lekko podniszczone kamienice.
-thing=czynnosc=rzecz=Opisik
-
 npc=Margas
 npc=Modar
 

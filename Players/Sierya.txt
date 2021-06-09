@@ -2,8 +2,9 @@ sierya
 drobna brazowooka
 kobieta
 czlowiek
-odmiana,sierya,sieryi,sieryi,sierye,sierya,sieryi
-startloc 1
-currentloc 1
-cechy,108,120,99,84,112
+odmiana,Sierya,sieryi,sieryi,sierye,sierya,sieryi
+startloc,1
+currentloc,1
+cechy,120,120,120,120,120
+ip,ciemnofioletowa-skorzana-torba
 iw,czarna-matowa-glewia

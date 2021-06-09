@@ -109,3 +109,15 @@ ManagerFight zmieniony do walki 1v1, zeby bylo prosciej dalej robic. Funkcja Fig
 
 ==============================================================
 ==============================================================
+
+CHANGELOG 5
+
+dodany WriteLocation i Save w Managerze - Save odpala sie na "zakoncz", WriteLocation na zmianie lokacji
+dodane elementy serwera, ale nie jest uzywany i sa zakomentowane
+usunieto things z lokacji i czytania lokacji (przeszkadzalo na razie)
+zrobiona klasa Container:Item w folderze Objects. Jest tam List<Item> Zawartosc oraz bool dla zamknietego pojemnika.
+ReadContainer w Managerze oraz poprawienie ReadPlayer zeby widzialo pojemniki. Z automatu otwiera pojemnik.
+Wyswietlanie pojemnikow wraz z awartoscia przy obejrzeniu pojemnika. Zawartosc nie zapisuje sie przy zapisie gracza.
+
+=============================================================
+=============================================================

@@ -46,7 +46,13 @@ namespace Program
                     //atak
                     Attack(player, cel);
                     if (player.HP <= 0) { Coloring.Red(SFuns.Up(cel.Name) + " zabil cie. Umierasz.\n"); break; }
-                    else if (cel.HP <= 0) { Coloring.DarkCyan(SFuns.Up(cel.Name) + " umiera.\n"); break; }
+                    else if (cel.HP <= 0)
+                    {
+                        Coloring.DarkCyan(SFuns.Up(cel.Name) + " umiera.\n");
+                        (player as Player).CurrentLoc.NPCs.Remove(cel as NPC);
+                        Manager.WriteLocation((player as Player).CurrentLoc);
+                        break;
+                    }
                 }
                 Thread.Sleep(TimeSpan.FromSeconds(0.15));
                 if (cel.WeaponInHand.Speed == 0) Coloring.Red("\nDRAMATYCZNY BLAD!!!");

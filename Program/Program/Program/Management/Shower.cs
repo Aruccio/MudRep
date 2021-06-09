@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Program.Objects;
 
 namespace Program
 {
@@ -94,6 +95,29 @@ namespace Program
                         Cloth cl = item as Cloth;
                         Console.WriteLine("Ogladasz uwaznie " + cl.Odm.Biernik + ".");
                         Console.WriteLine(Splice(cl.Long));
+                    }
+                    else if (item is Container)
+                    {
+                        Container co = item as Container;
+                        Console.WriteLine("Ogladasz uwaznie " + co.Odm.Biernik + ".");
+                        Console.WriteLine(Splice(co.Long));
+                        if (co.Closed) Console.WriteLine("Jest zamknieta.");
+                        else
+                        {
+                            if (co.Zawartosc.Count == 0)
+                            {
+                                Console.WriteLine(SFuns.Up(co.Odm.Mianownik) + " nie zawiera nic.");
+                            }
+                            else
+                            {
+                                Console.Write("Wewnatrz " + co.Odm.Dopelniacz + " widzisz ");
+                                string zaw = "";
+                                for (int i = 0; i < co.Zawartosc.Count - 1; i++) zaw += co.Zawartosc[i].Odm.Biernik + ", ";
+                                zaw += co.Zawartosc[co.Zawartosc.Count - 1].Odm.Biernik + ".";
+
+                                Console.WriteLine(Splice(zaw));
+                            }
+                        }
                     }
                     else if (item is Itemy)
                     {

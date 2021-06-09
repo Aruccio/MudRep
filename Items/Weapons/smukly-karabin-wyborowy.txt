@@ -3,4 +3,5 @@ Karabin, na ktory patrzysz, jest zdecydowanie profesjonalnie wykonana bronia. Je
 twohand
 odmiana,smukly karabin wyborowy, smuklego karabinu wyborowego,smuklemu karabinowi wyborowemu,smukly karabin wyborowy,smuklym karabinem wyborowym,smuklym karabinie wyborowym
 odmiana,smukle karabiny wyborowe,smuklych karabinow wyborowych,smuklym karabinom wyborowym,smukle karabiny wyborowe,smuklymi karabinami wyborowymi,smuklych karabinach wyborowych
-4
+speed,7
+damage,17
